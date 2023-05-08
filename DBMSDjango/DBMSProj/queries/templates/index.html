@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<head>
+    <title>Beach Volleyball Statistics</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('input[type="radio"]').click(function() {
+                var value = $(this).val();
+                $.ajax({
+                    url: "/updateContent/",
+                    type: "GET",
+                    data: {'option': value},
+                    dataType: 'json',
+                    success: function(resp) {
+                        $('#content').html(resp.html);
+                    }
+                });
+            });
+        });
+
+        $(document).ready(function() {
+            $('#registeredTournamentsButton').click(function() {
+                var name = $('#nameRT').val();
+                var option = "registeredTournaments" + name;
+                $.ajax({
+                    url: "/updateContent/",
+                    type: 'GET',
+                    data: {
+                        'option': option
+                    },
+                    dataType: 'json',
+                    success: function(resp) {
+                        $('#content').html(resp.html);
+                    }
+                })
+            })
+        })
+
+        $(document).ready(function() {
+            $('#playerInfoButton').click(function() {
+                var name = $('#namePI').val();
+                var option = "playerInfo" + name;
+                $.ajax({
+                    url: "/updateContent/",
+                    type: 'GET',
+                    data: {
+                        'option': option,
+                    },
+                    dataType: 'json',
+                    success: function(resp) {
+                        $('#content').html(resp.html);
+                    }
+                })
+            })
+        })
+
+        $(document).ready(function() {
+            $('#playersOverHeightButton').click(function() {
+                var height = $('#height').val();
+                var option = "playerHeight" + height;
+                $.ajax({
+                    url: "/updateContent/",
+                    type: 'GET',
+                    data: {
+                        'option': option,
+                    },
+                    dataType: 'json',
+                    success: function(resp) {
+                        $('#content').html(resp.html);
+                    }
+                })
+            })
+        })
+
+        $(document).ready(function() {
+            $('#ageRangeButton').click(function() {
+                var min = $('#minAge').val();
+                var max = $('#maxAge').val();
+
+                var option = "teamsAgeRange" + min + "-" + max;
+                $.ajax({
+                    url: "/updateContent/",
+                    type: 'GET',
+                    data: {
+                        'option': option,
+                    },
+                    dataType: 'json',
+                    success: function(resp) {
+                        $('#content').html(resp.html);
+                    }
+                })
+            })
+        })
+
+        $(document).ready(function() {
+            $('#countryRanksButton').click(function() {
+                var country = $('#country').val();
+                var option = "countryRanks" + country;
+                $.ajax({
+                    url: "/updateContent/",
+                    type: 'GET',
+                    data: {
+                        'option': option,
+                    },
+                    dataType: 'json',
+                    success: function(resp) {
+                        $('#content').html(resp.html);
+                    }
+                })
+            })
+        })
+
+        $(document).ready(function() {
+            $('#durationButton').click(function() {
+                var duration = $('#duration').val();
+                var option = "gameDuration" + duration;
+                $.ajax({
+                    url: "/updateContent/",
+                    type: 'GET',
+                    data: {
+                        'option': option,
+                    },
+                    dataType: 'json',
+                    success: function(resp) {
+                        $('#content').html(resp.html);
+                    }
+                })
+            })
+        })
+    </script>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        #header {
+            background-color: #E8C342;
+            border-radius: 20px;
+            color: #F3ECEC;
+            padding: 2px;
+            text-align: center;
+            text-shadow:
+            -1px -1px 0 #000000,
+            1px -1px 0 #000000,
+            -1px 1px 0 #000000,
+            1px 1px 0 #000000,
+            -2px 0 0 #000000,
+            2px 0 0 #000000,
+            0 2px 0 #000000,
+            0 -2px 0 #000000;
+        }
+
+        #page-content {
+            position: relative;
+            background-image: url('https://s.hdnux.com/photos/01/27/25/75/22896456/4/1200x0.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            border-radius: 20px;
+            padding: 10px;
+        }
+
+        /* #input-area {
+            margin: 20px;
+            padding: 10px;
+            background-color: RGBA(243, 236, 236, .7);
+            border-radius: 10px;
+        } */
+
+        body {
+            background-color: #e4dcdc;
+        }
+
+        .flex-container {
+            display: flex;
+        }
+
+        .flex-child {
+            flex: 1;
+            background-color: RGBA(243, 236, 236, .7);
+            border-radius: 10px;
+            border: 2px solid gray
+        }
+
+        .flex-child:first-child {
+            margin-right:20px
+        }
+
+        #content-container {
+            margin: 8px;
+            background-color: RGBA(243, 236, 236, .7);
+            text-align: center;
+            border: 2px solid gray;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header">
+        <h1>BEACH VOLLEYBALL DATABASE</h1>
+    </div>
+    <br>
+    <div id="page-content">
+        <div class = "flex-container">
+            <div class="flex-child preset">
+                <h1>Welcome to the Beach Volleyball Database Page!</h1>
+                <p >
+                    This page was created to provide a straightforward web application to query our Database
+                    of neach volleyball game and torunament statistics. Below are a few options for some pre-made
+                    queries to organize and view the data, and to the right are some options in place for you to filter
+                    the database based on your own input to get a more refined search of the available information!
+                    
+                    <br>
+                    <br>
+                    <br>
+
+                    The results of your queries will be displayed in the conten box at the bottom of the screen.
+                </p>
+                <h2>Organize Database By:</h2>
+                <input type="radio" name="option" value="TournamentWinners">
+                <label for="TournamentWinners">Display All Tournament Winning Teams</label><br>
+            
+                <input type="radio" name="option" value="TournamentWinnerInfo">
+                <label for="TournamentWinnerInfo">Display Tournament Winners by Circuit/Date</label><br>
+            
+                <input type="radio" name="option" value="TeamRanks">
+                <label for="TeamRanks">Display Teams and Their Ranks</label><br>
+            
+                <input type="radio" name="option" value="PosStats">
+                <label for="PosStats">Display Players' Hitting Percentage, Attacks, Kills, Aces</label><br>
+            
+                <input type="radio" name="option" value="ErrorStats">
+                <label for="ErrorStats">Display Players' Error Stats (Hit%, Serving Errors, Errors)</label><br>
+            
+                <input type="radio" name="option" value="PlayedTogether">
+                <label for="PlayedTogether">Show Player Combos in Tournaments</label><br>
+            
+                <p>Organize Teams By Gender:</p>
+                <input type="radio" name="option" value="MaleTeams">
+                <label for="MaleTeams">Male Teams</label><br>
+                <input type="radio" name="option" value="FemaleTeams">
+                <label for="FemaleTeams">Female Teams</label><br><br>
+            
+                <br><br>
+            </div>
+            <div class="flex-child custom">
+                <h2>Custom Database Filters</h2>
+        
+                <h3>View all Tournaments a Player is Registered For</h3>
+                <form id = "registeredTournaments">
+                    <label for="name">Enter Player Name:</label>
+                    <input type="text" id="nameRT" name="name">
+                    <button type="button" id="registeredTournamentsButton">Submit</button>
+                </form>
+            
+                <br><br>
+            
+                <h3>Get All Info on a Player</h3>
+                <form id = "getPlayerInfo">
+                    <label for="name">Enter Player Name:</label>
+                    <input type="text" id="namePI" name="name">
+                    <button type="button" id="playerInfoButton">Submit</button>
+                </form>
+            
+                <br><br>
+            
+                <h3>List All Teams with Both Players Over a Selected Height</h3>
+                <form id = "playersOverHeight">
+                    <label for="name">Enter Height (Inches):</label>
+                    <input type="number" id="height" name="name">
+                    <button type="button" id="playersOverHeightButton">Submit</button>
+                </form>
+            
+                <br><br>
+            
+                <h3>Get All Team Ranks By Country</h3>
+                <form id = "countryRanksForm">
+                    <label for="name">Enter Country:</label>
+                    <input type="text" id="country" name="name">
+                    <button type="button" id="countryRanksButton">Submit</button>
+                </form>
+            
+                <br><br>
+            
+                <h3>Display Game Stats for Matches Over Set Duration</h3>
+                <form id = "gameDurationForm">
+                    <label for="name">Enter Game Duration (Minutes):</label>
+                    <input type="number" id="duration" name="name">
+                    <button type="button" id="durationButton">Submit</button>
+                </form>
+            
+                <br><br>
+                <h3>List All Teams In Certain Age Range</h3>
+                <form id = "teamsInAgeRange">
+                    <label for="name">Enter Min Age:</label>
+                    <input type="number" id="minAge" name="name">
+                    <label for="name">&emsp;Enter Max Age:</label>
+                    <input type="number" id="maxAge" name="name">
+                    <button type="button" id="ageRangeButton">Submit</button>
+                </form>
+                <br><br>
+            </div>
+        </div>
+
+        <div id="content-container">
+            <center>
+                <div id="content">
+                    <p>DATA WILL DISPLAY HERE</p>
+                </div>
+            </center>
+            <!-- <div id="content">
+                <p>Data will display here.</p>
+            </div> -->
+        </div>
+    </div>
+</body>
+</html>
