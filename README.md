@@ -15,6 +15,6 @@ Required Python Dependencies:
 
 ### Running Django Server for Testing:
 - Open terminal in DBMSDjango/DBMSProj/ directory of project
-  i.e. `cd C:\Users\Nick\Desktop\School\CS366\DBMSProject\DBMSDjango\DBMSProj`
+  (i.e. `cd C:\Users\Nick\Desktop\School\CS366\DBMSProject\DBMSDjango\DBMSProj`)
 - Run terminal command `python manage.py runserver`
 - Open browser and navigate to local host address `http://127.0.0.1:8000/queries/`
