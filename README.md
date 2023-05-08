@@ -1,9 +1,9 @@
 # CS366 Final Project - Beach Volleyball Database
 
 ### Group Members:
-Nathan Ligocki
-Tyler Roob
-Nick Murphy
+Nathan Ligocki<br>
+Tyler Roob<br>
+Nick Murphy<br>
 
 ### Project setup instructions for local testing:
 Python installation required for backend code - written in Python v3.11.3<br>
